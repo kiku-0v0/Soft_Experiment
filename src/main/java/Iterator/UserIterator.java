@@ -1,11 +1,9 @@
 package Iterator;
 
-import Composite.Component;
 import Composite.Organization;
 import Composite.User;
-import Dao.OrganizationDao;
 
-import java.sql.SQLException;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -69,6 +67,5 @@ public class UserIterator implements Iterator{
             }
         }*/
     }
-
 
 }

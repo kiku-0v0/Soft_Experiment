@@ -1,5 +1,6 @@
 package Composite;
 
+import Accessor.Visitor;
 import Iterator.OrganizationIterator;
 
 import java.util.ArrayList;
@@ -67,4 +68,9 @@ public class User extends Component{
         }
         return perimissionList;
     }
+
+    public void accept(Visitor visitor){
+        visitor.visit(this);
+    }
+
 }

@@ -31,7 +31,6 @@ public class OrganizationDao {
             //Organization parentOrganization = (parentOrgID != null) ? orgMap.get(parentOrgID) : null;
             Organization org = new Organization(fID, fName, fPermission, fHigherUpIDs, fRemark, fOrgGUID,organizations1,users);
 
-
             if (fHigherUpIDs == null || fHigherUpIDs.equals("0")) {
                 // 如果没有父机构，将其添加为根机构
                 organizations.add(org); // 将根机构直接加入根机构列表
@@ -60,7 +59,7 @@ public class OrganizationDao {
     }//从数据库将数据映射到Organization类中，返回机构数组
 
 
-
+    //访问数据库得到所有的用户列表，并将用户所属的机构ID划分成字符串返回
     public static List<User> getAllUser() throws SQLException {
         List<User> users = new ArrayList<>();
 
@@ -93,6 +92,7 @@ public class OrganizationDao {
         return users;
     }
 
+    //根据Orgid来查找用户
     public static List<User> getUsersByOrgID(String orgID) throws SQLException {
         List<User> users;
         users = getAllUser();

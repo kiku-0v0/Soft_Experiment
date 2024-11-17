@@ -27,17 +27,32 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         switch (scan.next()){
             case "1":
-                orgIterator.getAllUser();//查找某个机构下的所有用户
+                System.out.print("输入你要查询的机构ID:");
+                Scanner scanner1 = new Scanner(System.in);
+                String orgID1 = scanner1.next();
+                System.out.println("该机构的所有成员如下:");
+                for(User user :  orgIterator.getAllUser(orgID1)){//查找某个机构下的所有用户
+                    System.out.println(user.toString());
+                }
                 break;
             case "2":
                 userIterator.getUserPermission(organizationList);
                 break;
             case "3":
-                orgIterator.getAllOrganization();
+                System.out.print("输入你要查询的机构ID:");
+                Scanner scanner = new Scanner(System.in);
+                String orgID = scanner.next();
+                System.out.println("该机构的所有下属机构如下:");
+                for(Organization org : orgIterator.getAllOrganization(orgID)){
+                    System.out.println(org.toString());
+                }
+                //orgIterator.getAllOrganization(orgID);
                 break;
             case "4":
                 userIterator.getUserGUID();
                 break;
+            default:
+                System.out.println("输入有误");
         }
     }
 }

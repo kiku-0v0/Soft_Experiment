@@ -4,6 +4,7 @@ import Composite.Component;
 import Composite.Organization;
 import Composite.User;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,29 +34,26 @@ public class OrganizationIterator implements Iterator {
         throw new UnsupportedOperationException();
     }
 
-    public void getAllOrganization(){
-        System.out.print("输入你要查询的机构ID:");
-        Scanner scanner = new Scanner(System.in);
-        String orgID = scanner.next();
-        System.out.println("该机构的所有下属机构如下:");
-        while(hasNext()){
+    //得到该机构下的所有机构，不包括自己
+    public List<Organization> getAllOrganization(String orgID) {
+        List<Organization> resultList = new ArrayList<>();
+        while (hasNext()) {
             Organization org = next();
 
-            if(org.getfID().equals(orgID)){
+            if (org.getfID().equals(orgID)) {
                 OrganizationIterator organizationIterator = new OrganizationIterator(org.getChildOrganizations());
-                while(organizationIterator.hasNext()){
+                while (organizationIterator.hasNext()) {
                     Organization org1 = organizationIterator.next();
-                    System.out.println(org1.toString());
+                    resultList.add(org1);
+                    //System.out.println(org1.toString());
                 }
             }
         }
+        return resultList;
     }
 
-    public void getAllUser(){
-        System.out.print("输入你要查询的机构ID:");
-        Scanner scanner = new Scanner(System.in);
-        String orgID = scanner.next();
-        System.out.println("该机构的所有成员如下:");
+    public List<User> getAllUser(String orgID){
+        List<User> resultList = new ArrayList<>();
         while(hasNext()){
             Organization org = next();
 
@@ -63,10 +61,12 @@ public class OrganizationIterator implements Iterator {
                 UserIterator userIterator = new UserIterator(org.getChildUser_1());
                 while(userIterator.hasNext()){
                     User user = userIterator.next();
-                    System.out.println(user.toString());
+                    resultList.add(user);
+                    //System.out.println(user.toString());
                 }
             }
         }
+        return resultList;
     }//查找某个ID下的所有用户
 
 }
