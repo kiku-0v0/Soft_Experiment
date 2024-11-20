@@ -15,7 +15,7 @@ Util类用于获取各个部门的用户
 public class Util {
 
 
-    public static List<Organization> getALLOrganization(String organizationID,String orgID) throws SQLException {
+    public static List<Organization> getALLOrganization(String organizationID,String orgID) throws SQLException, ClassNotFoundException {
         List<Organization> organizationList = OrganizationDao.getAllOrganization();
         OrganizationIterator orgIterator = new OrganizationIterator(organizationList);
         List<Organization> organizations = orgIterator.getAllOrganization(organizationID);
@@ -30,7 +30,7 @@ public class Util {
     /*
     根据机构的ID找到他下属所有部门的所有成员
      */
-    public static List<User> getAllUser(String organizationID,String orgID) throws SQLException {
+    public static List<User> getAllUserByOrg(String organizationID,String orgID) throws SQLException, ClassNotFoundException {
         List<User> userList = new ArrayList<>();
         List<Organization> organizationList = getALLOrganization(organizationID,orgID);
         UserIterator userIterator = new UserIterator(OrganizationDao.getAllUser());
@@ -47,4 +47,9 @@ public class Util {
         }
         return userList;
     }
+
+    //public static String getUserPermissionsForOrg(String fName){
+
+    //}
+
 }

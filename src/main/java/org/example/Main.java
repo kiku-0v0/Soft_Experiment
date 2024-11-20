@@ -31,12 +31,12 @@ public class Main {
                 Scanner scanner1 = new Scanner(System.in);
                 String orgID1 = scanner1.next();
                 System.out.println("该机构的所有成员如下:");
-                for(User user :  orgIterator.getAllUser(orgID1)){//查找某个机构下的所有用户
+                for(User user :  orgIterator.getAllUserByOrg(orgID1)){//查找某个机构下的所有用户
                     System.out.println(user.toString());
                 }
                 break;
             case "2":
-                userIterator.getUserPermission(organizationList);
+                userIterator.getUserPermission(organizationList,"010102");
                 break;
             case "3":
                 System.out.print("输入你要查询的机构ID:");

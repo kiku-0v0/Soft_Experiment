@@ -52,21 +52,15 @@ public class OrganizationIterator implements Iterator {
         return resultList;
     }
 
-    public List<User> getAllUser(String orgID){
-        List<User> resultList = new ArrayList<>();
+    public List<User> getAllUserByOrg(String orgID){
         while(hasNext()){
             Organization org = next();
 
             if(org.getfID().equals(orgID)){
-                UserIterator userIterator = new UserIterator(org.getChildUser_1());
-                while(userIterator.hasNext()){
-                    User user = userIterator.next();
-                    resultList.add(user);
-                    //System.out.println(user.toString());
-                }
+                return org.getChildUser_1();
             }
         }
-        return resultList;
+        return null;
     }//查找某个ID下的所有用户
 
 }

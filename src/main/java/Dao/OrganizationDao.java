@@ -7,10 +7,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class OrganizationDao {
-    public static List<Organization> getAllOrganization() throws SQLException{
+    public static List<Organization> getAllOrganization() throws SQLException, ClassNotFoundException {
         List<Organization> organizations = new ArrayList<>();
         Map<String,Organization> orgMap = new HashMap<>();
 
+        Class.forName("com.mysql.cj.jdbc.Driver");
         //从数据库查询所有机构信息
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/experiment_2", "root", "123456");
         Statement stmt = connection.createStatement();

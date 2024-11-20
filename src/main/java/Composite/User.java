@@ -52,7 +52,6 @@ public class User extends Component{
     }
 
     public List<String> getUserPermission(List<Organization> org){
-        System.out.println("该用户的权限如下:");
         OrganizationIterator organizationIterator = new OrganizationIterator(org);
         List<String> perimissionList = new ArrayList<>();
 
@@ -62,15 +61,11 @@ public class User extends Component{
             for(String str : fOrgIDs){
                 if(str.equals(organization.getfID())){
                     perimissionList.add(organization.getfPermission());
-                    //System.out.println(organization.getfPermission());
                 }
             }
         }
         return perimissionList;
     }
 
-    public void accept(Visitor visitor){
-        visitor.visit(this);
-    }
 
 }

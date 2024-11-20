@@ -4,8 +4,7 @@ import Composite.Organization;
 import Composite.User;
 
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class UserIterator implements Iterator{
     private List<User> Users;
@@ -34,22 +33,32 @@ public class UserIterator implements Iterator{
         throw new UnsupportedOperationException();
     }
 
-    public void getUserPermission(List<Organization> organizationList) {
-        System.out.print("请输入你要查询的用户学号:");
-        Scanner scanner = new Scanner(System.in);
-        String UserfName = scanner.next();
+    public String getUserPermission(List<Organization> organizationList,String UserfName) {
+        StringBuilder permission = new StringBuilder();
         while(hasNext()){
             User user = next();
             if(user.getfName().equals(UserfName)){
-                System.out.println(user.getUserPermission(organizationList));
+                OrganizationIterator organizationIterator = new OrganizationIterator(organizationList);
+                while(organizationIterator.hasNext()){
+                    Organization organization = organizationIterator.next();
+                    for(String str : user.getfOrgIDs()){
+                        if(str.equals(organization.getfID())){
+                                permission.append(organization.getfPermission());
+                        }
+                    }
+                }
             }
         }
-        /*for(User user : Users){
-            if(user.getfName().equals(UserfName)){
-                System.out.println(user.getUserPermission(organizationList));
-            }
-        }*/
-    }
+        String permission1 = permission.toString().replaceAll("[|]+",",");
+        String[] numbers = permission1.split(",");
+
+        numbers = Arrays.stream(numbers)
+                .filter(str -> !str.isEmpty())  // 过滤掉空字符串
+                .toArray(String[]::new);  // 转回数组
+
+        Set<String> uniqueNumbers = new TreeSet<>(Arrays.asList(numbers));
+        return String.join(",", uniqueNumbers);
+    }//获取用户的权限，并去重
 
     public void getUserGUID() {
         System.out.print("请输入你要查询的用户学号:");
@@ -61,11 +70,6 @@ public class UserIterator implements Iterator{
                 System.out.println("该用户的GUID为:" + user.getfUserGUID());
             }
         }
-        /*for(User user : Users){
-            if(user.getfName().equals(Userid)){
-                System.out.println("该用户的GUID为:" + user.getfUserGUID());
-            }
-        }*/
     }
 
 }
