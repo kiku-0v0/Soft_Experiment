@@ -6,6 +6,9 @@ import java.sql.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/*
+用于返回数据库的数据，返回成一个机构List，用户List
+ */
 public class OrganizationDao {
     public static List<Organization> getAllOrganization() throws SQLException, ClassNotFoundException {
         List<Organization> organizations = new ArrayList<>();

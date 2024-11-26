@@ -2,9 +2,11 @@ package Iterator;
 
 import Composite.Organization;
 import Composite.User;
-
-
 import java.util.*;
+
+/*
+用户迭代器
+ */
 
 public class UserIterator implements Iterator{
     private List<User> Users;

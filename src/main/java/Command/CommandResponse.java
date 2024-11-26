@@ -23,7 +23,6 @@ public class CommandResponse {
             String command = rootNode.get("command").asText();
             JsonNode parameters = rootNode.get("parameters");
 
-
             CommandRequest commandRequest = new CommandRequest(objectMapper);
             List<User> userList = OrganizationDao.getAllUser();
             UserIterator userIterator = new UserIterator(userList);

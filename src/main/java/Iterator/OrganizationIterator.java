@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/*
+机构迭代器
+ */
 public class OrganizationIterator implements Iterator {
     private List<Organization> organizations;
     private int Index = 0;

@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/*
+用户类，对应t_user表中的一条记录，但是使用List将所属机构划分
+ */
+
 public class User extends Component{
     private String fID;
     private List<String> fOrgIDs;

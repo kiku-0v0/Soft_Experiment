@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 /*
 Util类用于获取各个部门的用户
-由于之前获取的操作只能查询自己的子机构，不能查询自己，也无法查询下属机构的用户，因此重写一个专用的Util类
+由于之前OrganizationDao获取的操作只能查询自己的子机构，不能查询自己，也无法查询下属机构的用户，因此重写一个专用的Util类
  */
 public class Util {
 

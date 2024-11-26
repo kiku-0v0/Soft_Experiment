@@ -3,6 +3,10 @@ package Composite;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/*
+机构类，对应表t_organization中的一条记录，同时使用一个List存放子节点，以实现树结构
+ */
 public class Organization extends Component{
     private String fID;
     private String fName;
